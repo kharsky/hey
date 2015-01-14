@@ -16,6 +16,9 @@
 		6414C8901A66DB4F00D28B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88F1A66DB4F00D28B6C /* Images.xcassets */; };
 		6414C8931A66DB4F00D28B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414C8911A66DB4F00D28B6C /* LaunchScreen.xib */; };
 		6414C89F1A66DB4F00D28B6C /* heyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C89E1A66DB4F00D28B6C /* heyTests.m */; };
+		6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AA1A66DCB500D28B6C /* Vehicle.m */; };
+		6414C8AE1A66E1E700D28B6C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AD1A66E1E700D28B6C /* User.m */; };
+		6414C8B11A66E37800D28B6C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8B01A66E37800D28B6C /* Message.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,12 @@
 		6414C8981A66DB4F00D28B6C /* heyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = heyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6414C89D1A66DB4F00D28B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6414C89E1A66DB4F00D28B6C /* heyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = heyTests.m; sourceTree = "<group>"; };
+		6414C8A91A66DCB500D28B6C /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		6414C8AA1A66DCB500D28B6C /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
+		6414C8AC1A66E1E700D28B6C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		6414C8AD1A66E1E700D28B6C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		6414C8AF1A66E37800D28B6C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		6414C8B01A66E37800D28B6C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +95,7 @@
 		6414C87B1A66DB4F00D28B6C /* hey */ = {
 			isa = PBXGroup;
 			children = (
+				6414C8A81A66DC4700D28B6C /* Model */,
 				6414C8801A66DB4F00D28B6C /* AppDelegate.h */,
 				6414C8811A66DB4F00D28B6C /* AppDelegate.m */,
 				6414C8861A66DB4F00D28B6C /* MasterViewController.h */,
@@ -125,6 +135,19 @@
 				6414C89D1A66DB4F00D28B6C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6414C8A81A66DC4700D28B6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6414C8A91A66DCB500D28B6C /* Vehicle.h */,
+				6414C8AA1A66DCB500D28B6C /* Vehicle.m */,
+				6414C8AC1A66E1E700D28B6C /* User.h */,
+				6414C8AD1A66E1E700D28B6C /* User.m */,
+				6414C8AF1A66E37800D28B6C /* Message.h */,
+				6414C8B01A66E37800D28B6C /* Message.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +251,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6414C88B1A66DB4F00D28B6C /* DetailViewController.m in Sources */,
+				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
+				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
 				6414C8881A66DB4F00D28B6C /* MasterViewController.m in Sources */,
+				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
 				6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */,
 				6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */,
 				6414C87F1A66DB4F00D28B6C /* main.m in Sources */,
