@@ -10,7 +10,7 @@
 		6414C87F1A66DB4F00D28B6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C87E1A66DB4F00D28B6C /* main.m */; };
 		6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8811A66DB4F00D28B6C /* AppDelegate.m */; };
 		6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8831A66DB4F00D28B6C /* hey.xcdatamodeld */; };
-		6414C8881A66DB4F00D28B6C /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8871A66DB4F00D28B6C /* MasterViewController.m */; };
+		6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8871A66DB4F00D28B6C /* MessagesViewController.m */; };
 		6414C88B1A66DB4F00D28B6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C88A1A66DB4F00D28B6C /* DetailViewController.m */; };
 		6414C88E1A66DB4F00D28B6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88C1A66DB4F00D28B6C /* Main.storyboard */; };
 		6414C8901A66DB4F00D28B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88F1A66DB4F00D28B6C /* Images.xcassets */; };
@@ -38,8 +38,8 @@
 		6414C8801A66DB4F00D28B6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6414C8811A66DB4F00D28B6C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6414C8841A66DB4F00D28B6C /* hey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hey.xcdatamodel; sourceTree = "<group>"; };
-		6414C8861A66DB4F00D28B6C /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		6414C8871A66DB4F00D28B6C /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		6414C8861A66DB4F00D28B6C /* MessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		6414C8871A66DB4F00D28B6C /* MessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		6414C8891A66DB4F00D28B6C /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		6414C88A1A66DB4F00D28B6C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		6414C88D1A66DB4F00D28B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 				6414C8A81A66DC4700D28B6C /* Model */,
 				6414C8801A66DB4F00D28B6C /* AppDelegate.h */,
 				6414C8811A66DB4F00D28B6C /* AppDelegate.m */,
-				6414C8861A66DB4F00D28B6C /* MasterViewController.h */,
-				6414C8871A66DB4F00D28B6C /* MasterViewController.m */,
+				6414C8861A66DB4F00D28B6C /* MessagesViewController.h */,
+				6414C8871A66DB4F00D28B6C /* MessagesViewController.m */,
 				6414C8891A66DB4F00D28B6C /* DetailViewController.h */,
 				6414C88A1A66DB4F00D28B6C /* DetailViewController.m */,
 				6414C88C1A66DB4F00D28B6C /* Main.storyboard */,
@@ -253,7 +253,7 @@
 				6414C88B1A66DB4F00D28B6C /* DetailViewController.m in Sources */,
 				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
 				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
-				6414C8881A66DB4F00D28B6C /* MasterViewController.m in Sources */,
+				6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */,
 				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
 				6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */,
 				6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */,
@@ -448,6 +448,7 @@
 				6414C8A41A66DB4F00D28B6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6414C8A51A66DB4F00D28B6C /* Build configuration list for PBXNativeTarget "heyTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +457,7 @@
 				6414C8A71A66DB4F00D28B6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
