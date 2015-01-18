@@ -11,7 +11,6 @@
 		6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8811A66DB4F00D28B6C /* AppDelegate.m */; };
 		6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8831A66DB4F00D28B6C /* hey.xcdatamodeld */; };
 		6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8871A66DB4F00D28B6C /* MessagesViewController.m */; };
-		6414C88B1A66DB4F00D28B6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C88A1A66DB4F00D28B6C /* DetailViewController.m */; };
 		6414C88E1A66DB4F00D28B6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88C1A66DB4F00D28B6C /* Main.storyboard */; };
 		6414C8901A66DB4F00D28B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88F1A66DB4F00D28B6C /* Images.xcassets */; };
 		6414C8931A66DB4F00D28B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414C8911A66DB4F00D28B6C /* LaunchScreen.xib */; };
@@ -19,6 +18,7 @@
 		6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AA1A66DCB500D28B6C /* Vehicle.m */; };
 		6414C8AE1A66E1E700D28B6C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AD1A66E1E700D28B6C /* User.m */; };
 		6414C8B11A66E37800D28B6C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8B01A66E37800D28B6C /* Message.m */; };
+		647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647948AC1A6C291F00D46C24 /* NewMessageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,6 @@
 		6414C8841A66DB4F00D28B6C /* hey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hey.xcdatamodel; sourceTree = "<group>"; };
 		6414C8861A66DB4F00D28B6C /* MessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		6414C8871A66DB4F00D28B6C /* MessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
-		6414C8891A66DB4F00D28B6C /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		6414C88A1A66DB4F00D28B6C /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		6414C88D1A66DB4F00D28B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6414C88F1A66DB4F00D28B6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6414C8921A66DB4F00D28B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		6414C8AD1A66E1E700D28B6C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6414C8AF1A66E37800D28B6C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		6414C8B01A66E37800D28B6C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		647948AB1A6C291F00D46C24 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		647948AC1A6C291F00D46C24 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,13 +100,13 @@
 				6414C8811A66DB4F00D28B6C /* AppDelegate.m */,
 				6414C8861A66DB4F00D28B6C /* MessagesViewController.h */,
 				6414C8871A66DB4F00D28B6C /* MessagesViewController.m */,
-				6414C8891A66DB4F00D28B6C /* DetailViewController.h */,
-				6414C88A1A66DB4F00D28B6C /* DetailViewController.m */,
 				6414C88C1A66DB4F00D28B6C /* Main.storyboard */,
 				6414C88F1A66DB4F00D28B6C /* Images.xcassets */,
 				6414C8911A66DB4F00D28B6C /* LaunchScreen.xib */,
 				6414C8831A66DB4F00D28B6C /* hey.xcdatamodeld */,
 				6414C87C1A66DB4F00D28B6C /* Supporting Files */,
+				647948AB1A6C291F00D46C24 /* NewMessageViewController.h */,
+				647948AC1A6C291F00D46C24 /* NewMessageViewController.m */,
 			);
 			path = hey;
 			sourceTree = "<group>";
@@ -250,10 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6414C88B1A66DB4F00D28B6C /* DetailViewController.m in Sources */,
 				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
 				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
 				6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */,
+				647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */,
 				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
 				6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */,
 				6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */,

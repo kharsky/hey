@@ -62,7 +62,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j05-EO-oG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="699"/>
+            <point key="canvasLocation" x="3" y="731"/>
+        </scene>
+        <!--New message-->
+        <scene sceneID="Iag-lr-as9">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vmA-yE-PYU" customClass="NewMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hKy-gg-D3F"/>
+                        <viewControllerLayoutGuide type="bottom" id="m2E-6X-8EF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="63K-05-Cu8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Vg9-SY-iXi">
+                                <rect key="frame" x="10" y="74" width="300" height="484"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vg9-SY-iXi" firstAttribute="top" secondItem="hKy-gg-D3F" secondAttribute="bottom" constant="10" id="CKq-UZ-Fs1"/>
+                            <constraint firstItem="m2E-6X-8EF" firstAttribute="top" secondItem="Vg9-SY-iXi" secondAttribute="bottom" constant="10" id="VKa-7y-0m8"/>
+                            <constraint firstAttribute="trailing" secondItem="Vg9-SY-iXi" secondAttribute="trailing" constant="10" id="rV4-FL-Dkh"/>
+                            <constraint firstItem="Vg9-SY-iXi" firstAttribute="leading" secondItem="63K-05-Cu8" secondAttribute="leading" constant="10" id="tAk-O1-dPI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New message" id="Oww-zK-K4n">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2us-5D-XR0">
+                            <connections>
+                                <action selector="cancel:" destination="vmA-yE-PYU" id="wkK-eR-5Ya"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="pM4-Fl-etK">
+                            <connections>
+                                <action selector="done:" destination="vmA-yE-PYU" id="aqD-yL-Jh9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="Vg9-SY-iXi" id="mfL-cQ-DhC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9qC-69-1Uc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="60"/>
         </scene>
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -90,9 +137,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="push" identifier="showDetail" id="jUr-3t-vfg"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -101,47 +145,35 @@
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz"/>
+                    <navigationItem key="navigationItem" title="Messages" id="tQt-TN-PWz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pkH-qg-DY6">
+                            <connections>
+                                <segue destination="7LN-Hz-PsA" kind="modal" identifier="ModalNewMessage" id="Rt6-Bc-vOc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322.66666666666669" y="60.586666666666666"/>
+            <point key="canvasLocation" x="364" y="60"/>
         </scene>
-        <!--Detail-->
-        <scene sceneID="Cn3-H9-jdl">
+        <!--Navigation Controller-->
+        <scene sceneID="efd-rJ-4ae">
             <objects>
-                <viewController title="Detail" id="Ah7-4n-0Wa" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
-                        <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="20" y="276" width="280" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="centerY" secondItem="MMQ-IT-qOo" secondAttribute="centerY" id="JzS-HC-Rnl"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7LN-Hz-PsA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KZ6-z3-Jov">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="detailDescriptionLabel" destination="Lei-5M-9Gs" id="sCT-F7-F6f"/>
+                        <segue destination="vmA-yE-PYU" kind="relationship" relationship="rootViewController" id="XH9-f0-ZZR"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyX-vF-VlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="716.26666666666665" y="60.586666666666666"/>
+            <point key="canvasLocation" x="823" y="60"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

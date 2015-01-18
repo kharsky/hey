@@ -7,13 +7,13 @@
 //
 
 #import "MessagesViewController.h"
-#import "DetailViewController.h"
-// ------------------------------------
+#import "NewMessageViewController.h"
+
 #import "Message.h"
 
 @interface MessagesViewController ()
 
-@property (nonatomic, copy) NSArray *messages;
+@property (nonatomic, copy) NSMutableArray *messages;
 
 @end
 
@@ -35,15 +35,13 @@
     message3.body = @"Строка три";
     message3.timestamp = [NSDate date];
     
-    // self.messages = [[NSArray alloc] initWithObjects:message1, message2, message3, nil];
+    self.messages = [[NSMutableArray alloc] init];
+}
 
-    self.messages = @[message1, message2, message3];
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+- (void)addMessage:(Message *)message {
+    [self.messages addObject:message];
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table View
@@ -58,6 +56,18 @@
     cell.textLabel.text = message.body;
     
     return cell;
+}
+
+#pragma mark - Navigation 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ModalNewMessage"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        
+        NewMessageViewController *newMessageViewController = [navigationController.viewControllers firstObject];
+        newMessageViewController.messagesViewController = self;
+    
+    }
 }
 
 @end

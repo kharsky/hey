@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "DetailViewController.h"
 #import "MessagesViewController.h"
 
 @interface AppDelegate ()

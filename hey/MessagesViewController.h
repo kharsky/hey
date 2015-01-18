@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class Message;
+
 @interface MessagesViewController : UITableViewController
+
+- (void)addMessage:(Message *)message;
 
 @end
 
