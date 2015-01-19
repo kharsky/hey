@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Vehicle;
+
 @interface Message : NSObject
 
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, strong) UIImage *photo;
 @property (nonatomic, strong) NSDate *timestamp;
+@property (nonatomic, strong) Vehicle *vehicle;
 
 @end

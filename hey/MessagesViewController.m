@@ -8,12 +8,14 @@
 
 #import "MessagesViewController.h"
 #import "NewMessageViewController.h"
+#import "MessageViewController.h"
 
 #import "Message.h"
+#import "Vehicle.h"
 
 @interface MessagesViewController ()
 
-@property (nonatomic, copy) NSMutableArray *messages;
+@property (nonatomic, strong) NSMutableArray *messages;
 
 @end
 
@@ -35,7 +37,7 @@
     message3.body = @"Строка три";
     message3.timestamp = [NSDate date];
     
-    self.messages = [[NSMutableArray alloc] init];
+    self.messages = [[NSMutableArray alloc] initWithObjects:message1, message2, message3, nil];
 }
 
 - (void)addMessage:(Message *)message {
@@ -54,6 +56,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     Message *message = [self.messages objectAtIndex:indexPath.row];
     cell.textLabel.text = message.body;
+    cell.detailTextLabel.text = message.vehicle.licenseNumber;
     
     return cell;
 }
@@ -66,7 +69,16 @@
         
         NewMessageViewController *newMessageViewController = [navigationController.viewControllers firstObject];
         newMessageViewController.messagesViewController = self;
+    }
     
+    if ([segue.identifier isEqualToString:@"PushMessage"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        Message *message = self.messages[indexPath.row];
+        
+        MessageViewController *messageViewController = segue.destinationViewController;
+        messageViewController.message = message;
     }
 }
 

@@ -10,13 +10,15 @@
 #import "MessagesViewController.h"
 
 #import "Message.h"
+#import "Vehicle.h"
 
 
 @interface NewMessageViewController ()
 
 @property (nonatomic, strong) Message *message;
 
-@property (nonatomic, weak) IBOutlet UITextView *textView;
+@property (nonatomic, weak) IBOutlet UITextView *messageBodyTextView;
+@property (nonatomic, weak) IBOutlet UITextField *licenseNumberTextField;
 
 @end
 
@@ -29,7 +31,11 @@
 }
 
 - (IBAction)done:(id)sender {
-    self.message.body = self.textView.text;
+    self.message.body = self.messageBodyTextView.text;
+    Vehicle *vehicle = [[Vehicle alloc] init];
+    vehicle.licenseNumber = self.licenseNumberTextField.text;
+    self.message.vehicle = vehicle;
+    
     [self.messagesViewController addMessage:self.message];
     
     [self dismissViewControllerAnimated:YES completion:nil];
