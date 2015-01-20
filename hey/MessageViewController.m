@@ -7,9 +7,15 @@
 //
 
 #import "MessageViewController.h"
+#import "MessagesViewController.h"
+
+#import "Message.h"
+#import "Vehicle.h"
 
 @interface MessageViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *licenseNumderLabel;
+@property (weak, nonatomic) IBOutlet UITextView *messageBodyTextView;
 @end
 
 @implementation MessageViewController
@@ -17,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.licenseNumderLabel.text = self.message.vehicle.licenseNumber;
+    self.messageBodyTextView.text = self.message.body;
 }
 
 - (void)didReceiveMemoryWarning {

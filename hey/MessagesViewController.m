@@ -13,9 +13,19 @@
 #import "Message.h"
 #import "Vehicle.h"
 
+typedef enum : NSUInteger {
+    MessagesViewControllerModeAll,
+    MessagesViewControllerModeMy
+} MessagesViewControllerMode;
+
 @interface MessagesViewController ()
 
+@property (nonatomic, strong) Vehicle *myVehicle;
+
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSArray *myMessages;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentetControl;
 
 @end
 
@@ -24,6 +34,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.myVehicle = [[Vehicle alloc] init];
+    self.myVehicle.licenseNumber = @"A111AA";
+    self.myVehicle.licenseNumberType = LicenseNumberTypeRegular;
+    self.myVehicle.vehicleType = VehicleTypePassenger;
     
     Message *message1 = [[Message alloc] init];
     message1.body = @"Строка один";
@@ -43,21 +58,47 @@
 - (void)addMessage:(Message *)message {
     [self.messages addObject:message];
 
+    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicle.licenseNumber == %@", self.myVehicle.licenseNumber];
+        self.myMessages = [self.messages filteredArrayUsingPredicate:predicate];
+    }
+    
     [self.tableView reloadData];
+}
+
+- (IBAction)switchMode:(id)sender {
+    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicle.licenseNumber == %@", self.myVehicle.licenseNumber];
+        self.myMessages = [self.messages filteredArrayUsingPredicate:predicate];
+    }
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
+        return [self.myMessages count];
+    }
     return [self.messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
-    Message *message = [self.messages objectAtIndex:indexPath.row];
-    cell.textLabel.text = message.body;
-    cell.detailTextLabel.text = message.vehicle.licenseNumber;
-    
+
+    UITableViewCell *cell = nil;
+ 
+    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeAll) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"AllMessageCell" forIndexPath:indexPath];
+        Message *message = [self.messages objectAtIndex:indexPath.row];
+        cell.textLabel.text = message.body;
+        cell.detailTextLabel.text = message.vehicle.licenseNumber;
+    } else if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"MyMessageCell" forIndexPath:indexPath];
+        Message *message = [self.myMessages objectAtIndex:indexPath.row];
+        cell.textLabel.text = message.body;
+    }
+
     return cell;
 }
 

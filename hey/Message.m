@@ -10,4 +10,9 @@
 
 @implementation Message
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@: %p, body=%@>",
+            NSStringFromClass([self class]), self, self.body];
+
+}
 @end

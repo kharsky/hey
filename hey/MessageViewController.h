@@ -12,6 +12,7 @@
 
 @interface MessageViewController : UIViewController
 
-@property (nonatomic, strong) Message *message; 
+@property (nonatomic, strong) Message *message;
+
 
 @end
