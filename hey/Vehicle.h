@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
 @interface Vehicle : NSObject
 
 @property (nonatomic, copy) NSString *licenseNumber;
-@property (nonatomic, assign) LicenseNumberType *licenseNumberType;
-@property (nonatomic, assign) VehicleType *vehicleType;
+@property (nonatomic, assign) LicenseNumberType licenseNumberType;
+@property (nonatomic, assign) VehicleType vehicleType;
 
 @end

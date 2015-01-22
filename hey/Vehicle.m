@@ -10,4 +10,9 @@
 
 @implementation Vehicle
 
+-(NSString *)description {
+    return [NSString stringWithFormat:@"<%@: %p, licenseNumber=%@>",
+            NSStringFromClass([self class]), self, self.licenseNumber];
+}
+
 @end
