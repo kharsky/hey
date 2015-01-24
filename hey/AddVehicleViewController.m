@@ -8,16 +8,21 @@
 
 #import "AddVehicleViewController.h"
 
+#import "LicenseNumberValidator.h"
 #import "Vehicle.h"
 
 typedef enum : NSUInteger {
-    TableViewCellLicenseNumberType = 1,
+    TableViewCellLicenseNumber,
+    TableViewCellLicenseNumberType,
     TableViewCellVehicleType,
 } TableViewCell;
 
-@interface AddVehicleViewController ()
+@interface AddVehicleViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) Vehicle *vehicle;
+
+@property (weak, nonatomic) IBOutlet UITextField *licenseNumberTextField;
+@property (weak, nonatomic) IBOutlet UILabel *licenseNumberTypeLabel;
 
 @end
 
@@ -27,6 +32,24 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     
     self.vehicle = [[Vehicle alloc] init];
+    
+    [self.licenseNumberTextField becomeFirstResponder];
+}
+
+- (NSString *)licenseNumberTypeString:(LicenseNumberType)licenseNumberType {
+    switch (licenseNumberType) {
+        case LicenseNumberTypeRegular:
+            return @"Обычный";
+            
+        case LicenseNumberTypePublic:
+            return @"Общественый";
+            
+        case LicenseNumberTypePolice:
+            return @"Полиция";
+            
+        case LicenseNumberTypeOther:
+            return @"Прочее";
+    }
 }
 
 - (void)presentLicenseNumberTypeActionSheet {
@@ -36,31 +59,35 @@ typedef enum : NSUInteger {
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
 
     
-    UIAlertAction *regularAction = [UIAlertAction actionWithTitle:@"Обычный"
+    UIAlertAction *regularAction = [UIAlertAction actionWithTitle:[self licenseNumberTypeString:LicenseNumberTypeRegular]
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
                                                               self.vehicle.licenseNumberType = LicenseNumberTypeRegular;
+                                                              self.licenseNumberTypeLabel.text = action.title;
                                                           }];
     [alertController addAction:regularAction];
     
-    UIAlertAction *publicAction = [UIAlertAction actionWithTitle:@"Общественый"
+    UIAlertAction *publicAction = [UIAlertAction actionWithTitle:[self licenseNumberTypeString:LicenseNumberTypePublic]
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
                                                               self.vehicle.licenseNumberType = LicenseNumberTypePublic;
+                                                              self.licenseNumberTypeLabel.text = action.title;
                                                           }];
     [alertController addAction:publicAction];
     
-    UIAlertAction *policeAction = [UIAlertAction actionWithTitle:@"Полиция"
+    UIAlertAction *policeAction = [UIAlertAction actionWithTitle:[self licenseNumberTypeString:LicenseNumberTypePolice]
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
                                                               self.vehicle.licenseNumberType = LicenseNumberTypePolice;
+                                                              self.licenseNumberTypeLabel.text = action.title;
                                                           }];
     [alertController addAction:policeAction];
     
-    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"Прочее"
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:[self licenseNumberTypeString:LicenseNumberTypeOther]
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
                                                               self.vehicle.licenseNumberType = LicenseNumberTypeOther;
+                                                              self.licenseNumberTypeLabel.text = action.title;
                                                           }];
     [alertController addAction:otherAction];
     
@@ -81,6 +108,10 @@ typedef enum : NSUInteger {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     switch (indexPath.row) {
+        case TableViewCellLicenseNumber:
+            [self.licenseNumberTextField becomeFirstResponder];
+            break;
+            
         case TableViewCellLicenseNumberType:
             [self presentLicenseNumberTypeActionSheet];
             break;
@@ -89,6 +120,19 @@ typedef enum : NSUInteger {
             [self presentVehicleTypeActionSheet];
             break;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (![LicenseNumberValidator isLicenseNumberValid:textField.text]) {
+        // TODO:Предупредить пользователя о неверном номере авто
+        return NO;
+    }
+
+    self.vehicle.licenseNumber = textField.text;
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 @end

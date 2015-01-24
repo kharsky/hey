@@ -21,6 +21,7 @@
 		6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */; };
 		647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647948AC1A6C291F00D46C24 /* NewMessageViewController.m */; };
 		64A47CDF1A6D823300289A8B /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A47CDE1A6D823300289A8B /* MessageViewController.m */; };
+		64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F702631A73D5BD00130051 /* LicenseNumberValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		647948AC1A6C291F00D46C24 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 		64A47CDD1A6D823300289A8B /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		64A47CDE1A6D823300289A8B /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		64F702621A73D5BD00130051 /* LicenseNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseNumberValidator.h; sourceTree = "<group>"; };
+		64F702631A73D5BD00130051 /* LicenseNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseNumberValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 				6414C8AD1A66E1E700D28B6C /* User.m */,
 				6414C8AF1A66E37800D28B6C /* Message.h */,
 				6414C8B01A66E37800D28B6C /* Message.m */,
+				64F702621A73D5BD00130051 /* LicenseNumberValidator.h */,
+				64F702631A73D5BD00130051 /* LicenseNumberValidator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
 				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
 				6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */,
+				64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */,
 				647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */,
 				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
 				6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */,
