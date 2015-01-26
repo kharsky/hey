@@ -134,21 +134,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syh-Qd-nXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="715"/>
+            <point key="canvasLocation" x="896" y="783"/>
         </scene>
         <!--Title-->
         <scene sceneID="JSb-gv-ecx">
             <objects>
-                <tableViewController id="hJW-B7-cKt" sceneMemberID="viewController">
+                <tableViewController id="hJW-B7-cKt" customClass="MyVehiclesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nRa-ff-ewj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="R4Q-Kn-hO8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VehicleCell" textLabel="6iP-oU-jga" style="IBUITableViewCellStyleDefault" id="R4Q-Kn-hO8">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R4Q-Kn-hO8" id="nOB-yW-1xV">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6iP-oU-jga">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -160,7 +168,7 @@
                     <navigationItem key="navigationItem" title="Title" id="nu6-nN-W74">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y3H-6e-9Pd">
                             <connections>
-                                <segue destination="ZOj-ar-pgu" kind="modal" id="DE0-3p-s3m"/>
+                                <segue destination="ZOj-ar-pgu" kind="modal" identifier="ModalAddVehicle" id="DE0-3p-s3m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -264,7 +272,18 @@
                             <outlet property="delegate" destination="jvS-Y0-khF" id="KUe-CX-TBC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add vehicle" id="Ft2-4G-qJf"/>
+                    <navigationItem key="navigationItem" title="Add vehicle" id="Ft2-4G-qJf">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="3CB-dQ-CQ9">
+                            <connections>
+                                <action selector="cancel:" destination="jvS-Y0-khF" id="Ae6-4n-QHe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="cNM-Sh-9VA">
+                            <connections>
+                                <action selector="done:" destination="jvS-Y0-khF" id="bhg-tY-Rdp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="licenseNumberTextField" destination="bOY-C8-Bdn" id="2Yw-9V-jAN"/>
                         <outlet property="licenseNumberTypeLabel" destination="e09-nz-6AD" id="Qhm-Qw-hAy"/>
@@ -398,7 +417,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6m-11-V1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-247" y="1105"/>
+            <point key="canvasLocation" x="-165" y="1496"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7XG-7m-maa">
@@ -417,7 +436,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAh-FH-WIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-151" y="60"/>
+            <point key="canvasLocation" x="-165" y="60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0eL-rO-sku">
@@ -444,7 +463,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="K5O-dc-uHB"/>
+        <segue reference="APw-LV-5Op"/>
         <segue reference="FcY-Sp-VTq"/>
     </inferredMetricsTieBreakers>
 </document>

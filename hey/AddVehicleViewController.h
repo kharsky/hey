@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "MyVehiclesViewController.h"
+
 @interface AddVehicleViewController : UITableViewController
+
+@property (nonatomic, weak) MyVehiclesViewController *myVehiclesViewController;
 
 @end

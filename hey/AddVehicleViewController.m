@@ -122,17 +122,29 @@ typedef enum : NSUInteger {
     }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     if (![LicenseNumberValidator isLicenseNumberValid:textField.text]) {
         // TODO:Предупредить пользователя о неверном номере авто
-        return NO;
+        return;
     }
-
     self.vehicle.licenseNumber = textField.text;
-    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    
+
     return YES;
+}
+
+- (IBAction)cancel:(id)sender {
+}
+
+
+- (IBAction)done:(id)sender {
+    [self.licenseNumberTextField resignFirstResponder];
+    [self.myVehiclesViewController addVehicle:self.vehicle];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
