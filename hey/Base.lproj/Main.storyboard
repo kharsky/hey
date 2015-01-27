@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syh-Qd-nXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="783"/>
+            <point key="canvasLocation" x="896" y="785"/>
         </scene>
         <!--Title-->
         <scene sceneID="JSb-gv-ecx">
@@ -175,7 +175,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aj-XK-wu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="1496"/>
+            <point key="canvasLocation" x="381" y="1508"/>
         </scene>
         <!--Add vehicle-->
         <scene sceneID="POS-vJ-KKM">
@@ -287,11 +287,12 @@
                     <connections>
                         <outlet property="licenseNumberTextField" destination="bOY-C8-Bdn" id="2Yw-9V-jAN"/>
                         <outlet property="licenseNumberTypeLabel" destination="e09-nz-6AD" id="Qhm-Qw-hAy"/>
+                        <outlet property="vehicleType" destination="EQI-YT-IX3" id="hBD-Cs-del"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbj-SU-yj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="1496"/>
+            <point key="canvasLocation" x="1294" y="1508"/>
         </scene>
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -417,7 +418,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6m-11-V1e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165" y="1496"/>
+            <point key="canvasLocation" x="-173" y="1508"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7XG-7m-maa">
@@ -454,7 +455,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Vi-FY-hn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880" y="1496"/>
+            <point key="canvasLocation" x="896" y="1508"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

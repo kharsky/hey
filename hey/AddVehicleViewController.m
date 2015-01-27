@@ -23,6 +23,7 @@ typedef enum : NSUInteger {
 
 @property (weak, nonatomic) IBOutlet UITextField *licenseNumberTextField;
 @property (weak, nonatomic) IBOutlet UILabel *licenseNumberTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *vehicleType;
 
 @end
 
@@ -51,6 +52,23 @@ typedef enum : NSUInteger {
             return @"Прочее";
     }
 }
+
+- (NSString *)vehicleTypeString:(VehicleType)vehicleType {
+    switch (vehicleType) {
+        case VehicleTypePassenger:
+            return @"Легковой";
+            
+        case VehicleTypeTruck:
+            return @"Грузовой";
+            
+        case VehicleTypeSUV:
+            return @"Внедорожник";
+            
+        case VehicleTypeOther:
+            return @"Прочее";
+    }
+}
+
 
 - (void)presentLicenseNumberTypeActionSheet {
     NSString *title = @"Тип гос.номера";
@@ -101,7 +119,50 @@ typedef enum : NSUInteger {
 }
 
 - (void)presentVehicleTypeActionSheet {
-
+    NSString *title = @"Тип автомобиля";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    
+    UIAlertAction *passengerAction = [UIAlertAction actionWithTitle:[self vehicleTypeString:VehicleTypePassenger]
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              self.vehicle.vehicleType = VehicleTypePassenger;
+                                                              self.vehicleType.text = action.title;
+                                                          }];
+    [alertController addAction:passengerAction];
+    
+    UIAlertAction *truckAction = [UIAlertAction actionWithTitle:[self vehicleTypeString:VehicleTypeTruck ]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             self.vehicle.vehicleType = VehicleTypeTruck;
+                                                             self.vehicleType.text = action.title;                                                   }];
+    [alertController addAction:truckAction];
+    
+    UIAlertAction *suvAction = [UIAlertAction actionWithTitle:[self vehicleTypeString:VehicleTypeSUV]
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             self.vehicle.vehicleType = VehicleTypeSUV;
+                                                             self.vehicleType.text = action.title;
+                                                         }];
+    [alertController addAction:suvAction];
+    
+    UIAlertAction *otherAction = [UIAlertAction actionWithTitle:[self vehicleTypeString:VehicleTypeOther]
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction *action) {
+                                                            self.vehicle.vehicleType = VehicleTypeOther;
+                                                            self.vehicleType.text = action.title;
+                                                        }];
+    [alertController addAction:otherAction];
+    
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Отмена"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -137,6 +198,7 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
