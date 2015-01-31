@@ -10,9 +10,17 @@
 
 @implementation Vehicle
 
--(NSString *)description {
+- (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p, licenseNumber=%@>",
             NSStringFromClass([self class]), self, self.licenseNumber];
+}
+
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:[Vehicle class]])
+        return NO;
+    
+    Vehicle *vehicle = (Vehicle *)object;
+    return [self.licenseNumber isEqualToString:vehicle.licenseNumber];
 }
 
 @end

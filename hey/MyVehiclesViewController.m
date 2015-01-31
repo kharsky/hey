@@ -9,11 +9,12 @@
 #import "MyVehiclesViewController.h"
 #import "AddVehicleViewController.h"
 
+#import "DataManager.h"
 #import "Vehicle.h"
 
 @interface MyVehiclesViewController ()
 
-@property (nonatomic, strong) NSMutableArray *myVehicles;
+@property (nonatomic, copy) NSArray *myVehicles;
 
 @end
 
@@ -21,19 +22,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.myVehicles = [[NSMutableArray alloc] init];
+    
+    [self.tableView setEditing:YES animated:YES];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    DataManager *dataManager = [DataManager sharedManager];
+    self.myVehicles = [dataManager myVehicles];
+    
+    [self.tableView reloadData];
 }
 
 - (void)addVehicle:(Vehicle *)vehicle {
-    [self.myVehicles addObject:vehicle];
-    
-    [self.tableView reloadData];
+    DataManager *dataManager = [DataManager sharedManager];
+    [dataManager addMyVehicle:vehicle];
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark - Table view data source
@@ -51,7 +58,13 @@
     return cell;
 }
 
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
