@@ -7,7 +7,7 @@
 //
 
 #import "MessagesViewController.h"
-#import "NewMessageViewController.h"
+#import "OldNewMessageViewController.h"
 #import "MessageViewController.h"
 
 #import "Message.h"
@@ -108,7 +108,7 @@ typedef enum : NSUInteger {
     if ([segue.identifier isEqualToString:@"ModalNewMessage"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         
-        NewMessageViewController *newMessageViewController = [navigationController.viewControllers firstObject];
+        OldNewMessageViewController *newMessageViewController = [navigationController.viewControllers firstObject];
         newMessageViewController.messagesViewController = self;
     }
     

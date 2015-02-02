@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AddVehicleViewController.h"
+
 @class Vehicle;
 
-@interface MyVehiclesViewController : UITableViewController
+@interface MyVehiclesViewController : UITableViewController <AddVehicle>
 
 - (void)addVehicle:(Vehicle *)vehicle;
 

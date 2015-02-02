@@ -204,7 +204,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)done:(id)sender {
     [self.licenseNumberTextField resignFirstResponder];
-    [self.myVehiclesViewController addVehicle:self.vehicle];
+    [self.sourceController addVehicle:self.vehicle];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

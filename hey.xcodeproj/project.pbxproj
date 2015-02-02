@@ -19,8 +19,9 @@
 		6414C8AE1A66E1E700D28B6C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AD1A66E1E700D28B6C /* User.m */; };
 		6414C8B11A66E37800D28B6C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8B01A66E37800D28B6C /* Message.m */; };
 		6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */; };
+		6429ADAD1A7EA94600DCEB1E /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */; };
 		6461D7341A7D4DC200ADA6BD /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461D7331A7D4DC200ADA6BD /* DataManager.m */; };
-		647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647948AC1A6C291F00D46C24 /* NewMessageViewController.m */; };
+		647948AD1A6C291F00D46C24 /* OldNewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647948AC1A6C291F00D46C24 /* OldNewMessageViewController.m */; };
 		64A47CDF1A6D823300289A8B /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A47CDE1A6D823300289A8B /* MessageViewController.m */; };
 		64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F702631A73D5BD00130051 /* LicenseNumberValidator.m */; };
 		64FD6C1C1A76B537001B2B8A /* MyVehiclesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD6C1B1A76B537001B2B8A /* MyVehiclesViewController.m */; };
@@ -59,10 +60,12 @@
 		6414C8B01A66E37800D28B6C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		6424C2ED1A71734B0066B985 /* AddVehicleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVehicleViewController.h; sourceTree = "<group>"; };
 		6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVehicleViewController.m; sourceTree = "<group>"; };
+		6429ADAB1A7EA94600DCEB1E /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 		6461D7321A7D4DC200ADA6BD /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		6461D7331A7D4DC200ADA6BD /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		647948AB1A6C291F00D46C24 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
-		647948AC1A6C291F00D46C24 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
+		647948AB1A6C291F00D46C24 /* OldNewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldNewMessageViewController.h; sourceTree = "<group>"; };
+		647948AC1A6C291F00D46C24 /* OldNewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldNewMessageViewController.m; sourceTree = "<group>"; };
 		64A47CDD1A6D823300289A8B /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		64A47CDE1A6D823300289A8B /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		64F702621A73D5BD00130051 /* LicenseNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseNumberValidator.h; sourceTree = "<group>"; };
@@ -171,14 +174,16 @@
 			children = (
 				6414C8861A66DB4F00D28B6C /* MessagesViewController.h */,
 				6414C8871A66DB4F00D28B6C /* MessagesViewController.m */,
-				647948AB1A6C291F00D46C24 /* NewMessageViewController.h */,
-				647948AC1A6C291F00D46C24 /* NewMessageViewController.m */,
+				647948AB1A6C291F00D46C24 /* OldNewMessageViewController.h */,
+				647948AC1A6C291F00D46C24 /* OldNewMessageViewController.m */,
 				64A47CDD1A6D823300289A8B /* MessageViewController.h */,
 				64A47CDE1A6D823300289A8B /* MessageViewController.m */,
 				6424C2ED1A71734B0066B985 /* AddVehicleViewController.h */,
 				6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */,
 				64FD6C1A1A76B537001B2B8A /* MyVehiclesViewController.h */,
 				64FD6C1B1A76B537001B2B8A /* MyVehiclesViewController.m */,
+				6429ADAB1A7EA94600DCEB1E /* NewMessageViewController.h */,
+				6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -284,11 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
+				6429ADAD1A7EA94600DCEB1E /* NewMessageViewController.m in Sources */,
 				64FD6C1C1A76B537001B2B8A /* MyVehiclesViewController.m in Sources */,
 				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
 				6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */,
 				64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */,
-				647948AD1A6C291F00D46C24 /* NewMessageViewController.m in Sources */,
+				647948AD1A6C291F00D46C24 /* OldNewMessageViewController.m in Sources */,
 				6461D7341A7D4DC200ADA6BD /* DataManager.m in Sources */,
 				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
 				6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */,
