@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Vehicle;
-@class Messages;
+@class Message;
 
 @interface DataManager : NSObject
 
@@ -19,7 +19,7 @@
 - (void)removeMyVehicle:(Vehicle *)vehicle;
 - (NSArray *)myVehicles;
 
-- (void)addMessage:(Messages *)message;
+- (void)addMessage:(Message *)message;
 - (NSArray *)allMessages;
 - (NSArray *)inboxMessages;
 

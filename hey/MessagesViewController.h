@@ -12,7 +12,7 @@
 
 @interface MessagesViewController : UITableViewController
 
-- (void)addMessage:(Message *)message;
+- (void)addNewMessage:(Message *)message;
 
 @end
 

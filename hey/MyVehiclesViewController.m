@@ -57,7 +57,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // метод вызывается при "делит"
+    // метод вызывается при удалении данных из таблицы
     Vehicle *vehicle = self.myVehicles[indexPath.row];
     [self removeVehicle:vehicle];
     

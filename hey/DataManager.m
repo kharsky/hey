@@ -52,7 +52,7 @@
 
 #pragma mark - Messages
 
-- (void)addMessage:(Messages *)message {
+- (void)addMessage:(Message *)message {
     [self.messagesPrivate addObject:message];
 }
 

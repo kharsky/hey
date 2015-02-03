@@ -14,6 +14,4 @@
 
 @interface MyVehiclesViewController : UITableViewController <AddVehicle>
 
-- (void)addVehicle:(Vehicle *)vehicle;
-
 @end

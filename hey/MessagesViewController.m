@@ -55,7 +55,7 @@ typedef enum : NSUInteger {
     self.messages = [[NSMutableArray alloc] initWithObjects:message1, message2, message3, nil];
 }
 
-- (void)addMessage:(Message *)message {
+- (void)addNewMessage:(Message *)message {
     [self.messages addObject:message];
 
     if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {

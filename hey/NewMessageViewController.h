@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewMessageViewController : UITableViewController
+#import "AddVehicleViewController.h"
+
+@interface NewMessageViewController : UITableViewController  <AddVehicle>
 
 @end
+
