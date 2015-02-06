@@ -93,10 +93,12 @@ typedef enum : NSUInteger {
         Message *message = [self.messages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
         cell.detailTextLabel.text = message.vehicle.licenseNumber;
+        cell.imageView.image = message.photo;
     } else if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"MyMessageCell" forIndexPath:indexPath];
         Message *message = [self.myMessages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
+        cell.imageView.image = message.photo;
     }
 
     return cell;

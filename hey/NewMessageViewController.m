@@ -22,12 +22,13 @@ typedef enum : NSUInteger {
     TableViewCellSituationType = 3,
 } TableViewCell;
 
-@interface NewMessageViewController ()
+@interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Message *message;
 @property (nonatomic, strong) Vehicle *vehicle;
 
 @property (nonatomic, assign) EmotionsType emotions;
+@property (nonatomic, strong) UIImage *photo;
 
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UILabel *emotionPlusLabel;
@@ -37,6 +38,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *licenseNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *situationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
 
 @end
 
@@ -61,9 +63,12 @@ typedef enum : NSUInteger {
     self.vehicle = vehicle;
 }
 
+
+
 - (void)presentImagePicker {
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imagePickerController.delegate = self;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
     
 }
@@ -235,6 +240,7 @@ typedef enum : NSUInteger {
     self.message.body = self.bodyMessageTextView.text;
     self.message.emotions = self.emotions;
     self.message.vehicle = self.vehicle;
+    self.message.photo = self.photo;
     
     DataManager *dataManager = [DataManager sharedManager];
     
@@ -243,6 +249,13 @@ typedef enum : NSUInteger {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - Image Picker Controller Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    self.photo = info[UIImagePickerControllerOriginalImage];
+    self.photoImageView.image = self.photo;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Navigation
 
