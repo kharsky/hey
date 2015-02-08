@@ -9,13 +9,13 @@
 #import "OldNewMessageViewController.h"
 #import "MessagesViewController.h"
 
-#import "Message.h"
-#import "Vehicle.h"
+#import "OldMessage.h"
+#import "OldVehicle.h"
 
 
 @interface OldNewMessageViewController ()
 
-@property (nonatomic, strong) Message *message;
+@property (nonatomic, strong) OldMessage *message;
 
 @property (nonatomic, weak) IBOutlet UITextView *messageBodyTextView;
 @property (nonatomic, weak) IBOutlet UITextField *licenseNumberTextField;
@@ -27,16 +27,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.message = [[Message alloc] init];
+    self.message = [[OldMessage alloc] init];
 }
 
 - (IBAction)done:(id)sender {
     self.message.body = self.messageBodyTextView.text;
-    Vehicle *vehicle = [[Vehicle alloc] init];
+    OldVehicle *vehicle = [[OldVehicle alloc] init];
     vehicle.licenseNumber = self.licenseNumberTextField.text;
     self.message.vehicle = vehicle;
     
-    [self.messagesViewController addMessage:self.message];
+   // [self.messagesViewController addMessage:self.message];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

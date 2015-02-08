@@ -13,8 +13,8 @@
 
 #import "DataManager.h"
 
-#import "Message.h"
-#import "Vehicle.h"
+#import "OldMessage.h"
+#import "OldVehicle.h"
 
 typedef enum : NSUInteger {
     TableViewCellLicenseNumber = 0,
@@ -24,8 +24,8 @@ typedef enum : NSUInteger {
 
 @interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, strong) Message *message;
-@property (nonatomic, strong) Vehicle *vehicle;
+@property (nonatomic, strong) OldMessage *message;
+@property (nonatomic, strong) OldVehicle *vehicle;
 
 @property (nonatomic, assign) EmotionsType emotions;
 @property (nonatomic, strong) UIImage *photo;
@@ -48,6 +48,7 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     self.emotionMinusLabel.textColor = [UIColor blackColor];
     self.emotionPlusLabel.textColor = [UIColor blackColor];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -59,7 +60,7 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)addVehicle:(Vehicle *)vehicle {
+- (void)addVehicle:(OldVehicle *)vehicle {
     self.vehicle = vehicle;
 }
 
@@ -81,7 +82,9 @@ typedef enum : NSUInteger {
 //    EmotionsTypeNeutral,        // Нейтрально
 //    EmotionsTypeAgreement,      // Согласие
 //    EmotionsTypeEndorsement,    // Одобрение
-//    
+    
+//
+    
     switch (self.emotions) {
         case EmotionsTypeAnger:
             self.emotionMinusLabel.textColor = [UIColor redColor];
@@ -235,7 +238,7 @@ typedef enum : NSUInteger {
 
 
 - (IBAction)done:(id)sender {
-    self.message = [[Message alloc] init];
+    self.message = [[OldMessage alloc] init];
     
     self.message.body = self.bodyMessageTextView.text;
     self.message.emotions = self.emotions;

@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MessagesViewController.h"
+
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    BOOL isUserLoggedIn = NO;
+//    if (!isUserLoggedIn) {
+//        // 1. Получить ссылку на сториборд
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//        // 2. Получить первый контроллер
+//        UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+//        UINavigationController *navigationController = [tabBarController.viewControllers firstObject];
+//        UIViewController *viewController = [navigationController.viewControllers firstObject];
+//        // 3. Попросить первый контроллер показать модельный контроллер логина
+//        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//        [viewController presentViewController:loginViewController animated:NO completion:nil];
+//    }
     return YES;
 }
 

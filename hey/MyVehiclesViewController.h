@@ -10,7 +10,7 @@
 
 #import "AddVehicleViewController.h"
 
-@class Vehicle;
+@class OldVehicle;
 
 @interface MyVehiclesViewController : UITableViewController <AddVehicle>
 

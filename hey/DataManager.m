@@ -38,11 +38,11 @@
 
 #pragma mark - Vehicles
 
-- (void)addMyVehicle:(Vehicle *)vehicle {
+- (void)addMyVehicle:(OldVehicle *)vehicle {
     [self.myVehiclesPrivate addObject:vehicle];
 }
 
-- (void)removeMyVehicle:(Vehicle *)vehicle {
+- (void)removeMyVehicle:(OldVehicle *)vehicle {
     [self.myVehiclesPrivate removeObject:vehicle];
 }
 
@@ -52,7 +52,7 @@
 
 #pragma mark - Messages
 
-- (void)addMessage:(Message *)message {
+- (void)addMessage:(OldMessage *)message {
     [self.messagesPrivate addObject:message];
 }
 

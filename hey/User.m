@@ -2,18 +2,22 @@
 //  User.m
 //  hey
 //
-//  Created by KONSTANTIN KHARSKIY on 14.01.15.
+//  Created by KONSTANTIN KHARSKIY on 07.02.15.
 //  Copyright (c) 2015 KONSTANTIN KHARSKIY. All rights reserved.
 //
 
 #import "User.h"
+#import "Message.h"
+#import "Vehicle.h"
+
 
 @implementation User
 
--(NSString *)description {
-    return [NSString stringWithFormat:@"<%@: %p, username=%@, password=%@, email=%@>",
-            NSStringFromClass([self class]), self, self.username, self.password, self.email];
-    
-}
+@dynamic avatar;
+@dynamic email;
+@dynamic password;
+@dynamic username;
+@dynamic messages;
+@dynamic myVehicles;
 
 @end

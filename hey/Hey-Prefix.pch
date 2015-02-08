@@ -1,0 +1,17 @@
+//
+//  Hey-Prefix.pch
+//  hey
+//
+//  Created by KONSTANTIN KHARSKIY on 08.02.15.
+//  Copyright (c) 2015 KONSTANTIN KHARSKIY. All rights reserved.
+//
+
+#ifndef Hey_Prefix_pch
+#define Hey_Prefix_pch
+
+#import <CoreData/CoreData.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

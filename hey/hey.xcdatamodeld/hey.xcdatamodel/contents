@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Message" representedClassName="Message">
+        <attribute name="body" attributeType="String" maxValueString="250" syncable="YES"/>
+        <attribute name="emotions" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="situation" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" syncable="YES"/>
+        <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User" syncable="YES"/>
+        <relationship name="vehicle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="messages" inverseEntity="Vehicle" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="author" inverseEntity="Message" syncable="YES"/>
+        <relationship name="myVehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="owners" inverseEntity="Vehicle" syncable="YES"/>
+    </entity>
+    <entity name="Vehicle" representedClassName="Vehicle" syncable="YES">
+        <attribute name="licenseNumber" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="licenseNumberType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="vehicleType" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="vehicle" inverseEntity="Message" syncable="YES"/>
+        <relationship name="owners" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="myVehicles" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Message" positionX="-128" positionY="-139" width="128" height="148"/>
+        <element name="User" positionX="-191" positionY="153" width="128" height="133"/>
+        <element name="Vehicle" positionX="-378" positionY="-90" width="128" height="118"/>
     </elements>
 </model>

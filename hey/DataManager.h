@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class Vehicle;
-@class Message;
+@class OldVehicle;
+@class OldMessage;
 
 @interface DataManager : NSObject
 
 + (id)sharedManager;
 
-- (void)addMyVehicle:(Vehicle *)vehicle;
-- (void)removeMyVehicle:(Vehicle *)vehicle;
+- (void)addMyVehicle:(OldVehicle *)vehicle;
+- (void)removeMyVehicle:(OldVehicle *)vehicle;
 - (NSArray *)myVehicles;
 
-- (void)addMessage:(Message *)message;
+- (void)addMessage:(OldMessage *)message;
 - (NSArray *)allMessages;
 - (NSArray *)inboxMessages;
 

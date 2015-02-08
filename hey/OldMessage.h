@@ -2,14 +2,15 @@
 //  Message.h
 //  hey
 //
-//  Created by KONSTANTIN KHARSKIY on 07.02.15.
+//  Created by KONSTANTIN KHARSKIY on 14.01.15.
 //  Copyright (c) 2015 KONSTANTIN KHARSKIY. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 
-typedef enum : int16_t {
+@class OldVehicle;
+
+typedef enum : NSUInteger {
     EmotionsTypeAnger,          // Гнев
     EmotionsTypeDisagreement,   // Несогласие
     EmotionsTypeNeutral,        // Нейтрально
@@ -17,7 +18,7 @@ typedef enum : int16_t {
     EmotionsTypeEndorsement,    // Одобрение
 } EmotionsType;
 
-typedef enum : int16_t {
+typedef enum : NSUInteger {
     SituationTypeAccident,  // Авария
     SituationTypeStyle,     // Стиль вождения
     SituationTypeParking,   // Парковка
@@ -28,19 +29,14 @@ typedef enum : int16_t {
     SituationTypeOther,     // Прочее
 } SituationType;
 
-@class User, Vehicle;
 
-@interface Message : NSManagedObject
+@interface OldMessage : NSObject
 
-// Attributes
-@property (nonatomic, retain) NSString * body;
-@property (nonatomic) EmotionsType emotions;
-@property (nonatomic, retain) NSData * photo;
-@property (nonatomic) SituationType situation;
-@property (nonatomic) NSTimeInterval timestamp;
-
-// Relations
-@property (nonatomic, retain) User *author;
-@property (nonatomic, retain) Vehicle *vehicle;
+@property (nonatomic, copy) NSString *body;              // текст сообщения
+@property (nonatomic, strong) UIImage *photo;            // фотография
+@property (nonatomic, strong) NSDate *timestamp;         // время добавления сообщения
+@property (nonatomic, assign) EmotionsType emotions;    // эмоции
+@property (nonatomic, assign) SituationType situation;  // дорожная ситуация
+@property (nonatomic, strong) OldVehicle *vehicle;          // автомобиль
 
 @end

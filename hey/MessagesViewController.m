@@ -10,8 +10,8 @@
 #import "OldNewMessageViewController.h"
 #import "MessageViewController.h"
 
-#import "Message.h"
-#import "Vehicle.h"
+#import "OldMessage.h"
+#import "OldVehicle.h"
 
 typedef enum : NSUInteger {
     MessagesViewControllerModeAll,
@@ -20,7 +20,7 @@ typedef enum : NSUInteger {
 
 @interface MessagesViewController ()
 
-@property (nonatomic, strong) Vehicle *myVehicle;
+@property (nonatomic, strong) OldVehicle *myVehicle;
 
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSArray *myMessages;
@@ -35,27 +35,27 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.myVehicle = [[Vehicle alloc] init];
+    self.myVehicle = [[OldVehicle alloc] init];
     self.myVehicle.licenseNumber = @"A111AA";
     self.myVehicle.licenseNumberType = LicenseNumberTypeRegular;
     self.myVehicle.vehicleType = VehicleTypePassenger;
     
-    Message *message1 = [[Message alloc] init];
+    OldMessage *message1 = [[OldMessage alloc] init];
     message1.body = @"Строка один";
     message1.timestamp = [NSDate date];
     
-    Message *message2 = [[Message alloc] init];
+    OldMessage *message2 = [[OldMessage alloc] init];
     message2.body = @"Строка два";
     message2.timestamp = [NSDate date];
     
-    Message *message3 = [[Message alloc] init];
+    OldMessage *message3 = [[OldMessage alloc] init];
     message3.body = @"Строка три";
     message3.timestamp = [NSDate date];
     
     self.messages = [[NSMutableArray alloc] initWithObjects:message1, message2, message3, nil];
 }
 
-- (void)addNewMessage:(Message *)message {
+- (void)addNewMessage:(OldMessage *)message {
     [self.messages addObject:message];
 
     if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
@@ -90,13 +90,13 @@ typedef enum : NSUInteger {
  
     if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeAll) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"AllMessageCell" forIndexPath:indexPath];
-        Message *message = [self.messages objectAtIndex:indexPath.row];
+        OldMessage *message = [self.messages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
         cell.detailTextLabel.text = message.vehicle.licenseNumber;
         cell.imageView.image = message.photo;
     } else if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"MyMessageCell" forIndexPath:indexPath];
-        Message *message = [self.myMessages objectAtIndex:indexPath.row];
+        OldMessage *message = [self.myMessages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
         cell.imageView.image = message.photo;
     }
@@ -118,7 +118,7 @@ typedef enum : NSUInteger {
         UITableViewCell *cell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
-        Message *message = self.messages[indexPath.row];
+        OldMessage *message = self.messages[indexPath.row];
         
         MessageViewController *messageViewController = segue.destinationViewController;
         messageViewController.message = message;

@@ -9,7 +9,7 @@
 #import "AddVehicleViewController.h"
 
 #import "LicenseNumberValidator.h"
-#import "Vehicle.h"
+#import "OldVehicle.h"
 
 typedef enum : NSUInteger {
     TableViewCellLicenseNumber,
@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 
 @interface AddVehicleViewController () <UITextFieldDelegate>
 
-@property (nonatomic, strong) Vehicle *vehicle;
+@property (nonatomic, strong) OldVehicle *vehicle;
 
 @property (weak, nonatomic) IBOutlet UITextField *licenseNumberTextField;
 @property (weak, nonatomic) IBOutlet UILabel *licenseNumberTypeLabel;
@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.vehicle = [[Vehicle alloc] init];
+    self.vehicle = [[OldVehicle alloc] init];
     
     [self.licenseNumberTextField becomeFirstResponder];
 }

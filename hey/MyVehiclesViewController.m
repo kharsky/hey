@@ -9,7 +9,7 @@
 #import "MyVehiclesViewController.h"
 
 #import "DataManager.h"
-#import "Vehicle.h"
+#import "OldVehicle.h"
 
 @interface MyVehiclesViewController ()
 
@@ -26,14 +26,14 @@
     self.myVehicles = [[dataManager myVehicles] mutableCopy];
 }
 
-- (void)addVehicle:(Vehicle *)vehicle {
+- (void)addVehicle:(OldVehicle *)vehicle {
     DataManager *dataManager = [DataManager sharedManager];
     [dataManager addMyVehicle:vehicle];
     
     [self.myVehicles addObject:vehicle];
 }
 
-- (void)removeVehicle:(Vehicle *)vehicle {
+- (void)removeVehicle:(OldVehicle *)vehicle {
     DataManager *dataManager = [DataManager sharedManager];
     [dataManager removeMyVehicle:vehicle];
     
@@ -49,7 +49,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleCell" forIndexPath:indexPath];
 
-    Vehicle *vehicle = [self.myVehicles objectAtIndex:indexPath.row];
+    OldVehicle *vehicle = [self.myVehicles objectAtIndex:indexPath.row];
     cell.textLabel.text = vehicle.licenseNumber;
     
     return cell;
@@ -58,7 +58,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     // метод вызывается при удалении данных из таблицы
-    Vehicle *vehicle = self.myVehicles[indexPath.row];
+    OldVehicle *vehicle = self.myVehicles[indexPath.row];
     [self removeVehicle:vehicle];
     
     [self.tableView beginUpdates];

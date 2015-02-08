@@ -15,14 +15,19 @@
 		6414C8901A66DB4F00D28B6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6414C88F1A66DB4F00D28B6C /* Images.xcassets */; };
 		6414C8931A66DB4F00D28B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414C8911A66DB4F00D28B6C /* LaunchScreen.xib */; };
 		6414C89F1A66DB4F00D28B6C /* heyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C89E1A66DB4F00D28B6C /* heyTests.m */; };
-		6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AA1A66DCB500D28B6C /* Vehicle.m */; };
-		6414C8AE1A66E1E700D28B6C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AD1A66E1E700D28B6C /* User.m */; };
-		6414C8B11A66E37800D28B6C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8B01A66E37800D28B6C /* Message.m */; };
+		6414C8AB1A66DCB500D28B6C /* OldVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AA1A66DCB500D28B6C /* OldVehicle.m */; };
+		6414C8AE1A66E1E700D28B6C /* OldUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8AD1A66E1E700D28B6C /* OldUser.m */; };
+		6414C8B11A66E37800D28B6C /* OldMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414C8B01A66E37800D28B6C /* OldMessage.m */; };
 		6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */; };
 		6429ADAD1A7EA94600DCEB1E /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */; };
+		644D36FA1A866A5600D51B8D /* ReadMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644D36F91A866A5600D51B8D /* ReadMessageViewController.m */; };
 		6461D7341A7D4DC200ADA6BD /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6461D7331A7D4DC200ADA6BD /* DataManager.m */; };
 		647948AD1A6C291F00D46C24 /* OldNewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647948AC1A6C291F00D46C24 /* OldNewMessageViewController.m */; };
+		64998E3C1A86816E00166AA8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 64998E3B1A86816E00166AA8 /* User.m */; };
+		64998E3F1A86816E00166AA8 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 64998E3E1A86816E00166AA8 /* Vehicle.m */; };
+		64998E421A86816E00166AA8 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 64998E411A86816E00166AA8 /* Message.m */; };
 		64A47CDF1A6D823300289A8B /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A47CDE1A6D823300289A8B /* MessageViewController.m */; };
+		64DED9B81A87C2E90011B91F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DED9B71A87C2E90011B91F /* LoginViewController.m */; };
 		64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F702631A73D5BD00130051 /* LicenseNumberValidator.m */; };
 		64FD6C1C1A76B537001B2B8A /* MyVehiclesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD6C1B1A76B537001B2B8A /* MyVehiclesViewController.m */; };
 /* End PBXBuildFile section */
@@ -52,22 +57,33 @@
 		6414C8981A66DB4F00D28B6C /* heyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = heyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6414C89D1A66DB4F00D28B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6414C89E1A66DB4F00D28B6C /* heyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = heyTests.m; sourceTree = "<group>"; };
-		6414C8A91A66DCB500D28B6C /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
-		6414C8AA1A66DCB500D28B6C /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
-		6414C8AC1A66E1E700D28B6C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		6414C8AD1A66E1E700D28B6C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		6414C8AF1A66E37800D28B6C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		6414C8B01A66E37800D28B6C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		6414C8A91A66DCB500D28B6C /* OldVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldVehicle.h; sourceTree = "<group>"; };
+		6414C8AA1A66DCB500D28B6C /* OldVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldVehicle.m; sourceTree = "<group>"; };
+		6414C8AC1A66E1E700D28B6C /* OldUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldUser.h; sourceTree = "<group>"; };
+		6414C8AD1A66E1E700D28B6C /* OldUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldUser.m; sourceTree = "<group>"; };
+		6414C8AF1A66E37800D28B6C /* OldMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldMessage.h; sourceTree = "<group>"; };
+		6414C8B01A66E37800D28B6C /* OldMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldMessage.m; sourceTree = "<group>"; };
 		6424C2ED1A71734B0066B985 /* AddVehicleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVehicleViewController.h; sourceTree = "<group>"; };
 		6424C2EE1A71734B0066B985 /* AddVehicleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVehicleViewController.m; sourceTree = "<group>"; };
 		6429ADAB1A7EA94600DCEB1E /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
 		6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
+		644D36F81A866A5600D51B8D /* ReadMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadMessageViewController.h; sourceTree = "<group>"; };
+		644D36F91A866A5600D51B8D /* ReadMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadMessageViewController.m; sourceTree = "<group>"; };
 		6461D7321A7D4DC200ADA6BD /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		6461D7331A7D4DC200ADA6BD /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		647948AB1A6C291F00D46C24 /* OldNewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldNewMessageViewController.h; sourceTree = "<group>"; };
 		647948AC1A6C291F00D46C24 /* OldNewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldNewMessageViewController.m; sourceTree = "<group>"; };
+		64998E3A1A86816E00166AA8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		64998E3B1A86816E00166AA8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		64998E3D1A86816E00166AA8 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		64998E3E1A86816E00166AA8 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
+		64998E401A86816E00166AA8 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		64998E411A86816E00166AA8 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		64A47CDD1A6D823300289A8B /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		64A47CDE1A6D823300289A8B /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		64DED9B61A87C2E90011B91F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		64DED9B71A87C2E90011B91F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		64DED9BA1A87CE8E0011B91F /* Hey-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Hey-Prefix.pch"; sourceTree = "<group>"; };
 		64F702621A73D5BD00130051 /* LicenseNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseNumberValidator.h; sourceTree = "<group>"; };
 		64F702631A73D5BD00130051 /* LicenseNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseNumberValidator.m; sourceTree = "<group>"; };
 		64FD6C1A1A76B537001B2B8A /* MyVehiclesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVehiclesViewController.h; sourceTree = "<group>"; };
@@ -120,7 +136,6 @@
 				6414C88C1A66DB4F00D28B6C /* Main.storyboard */,
 				6414C88F1A66DB4F00D28B6C /* Images.xcassets */,
 				6414C8911A66DB4F00D28B6C /* LaunchScreen.xib */,
-				6414C8831A66DB4F00D28B6C /* hey.xcdatamodeld */,
 				6414C87C1A66DB4F00D28B6C /* Supporting Files */,
 			);
 			path = hey;
@@ -131,6 +146,7 @@
 			children = (
 				6414C87D1A66DB4F00D28B6C /* Info.plist */,
 				6414C87E1A66DB4F00D28B6C /* main.m */,
+				64DED9BA1A87CE8E0011B91F /* Hey-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -155,14 +171,21 @@
 		6414C8A81A66DC4700D28B6C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6414C8831A66DB4F00D28B6C /* hey.xcdatamodeld */,
+				64998E401A86816E00166AA8 /* Message.h */,
+				64998E411A86816E00166AA8 /* Message.m */,
+				64998E3D1A86816E00166AA8 /* Vehicle.h */,
+				64998E3E1A86816E00166AA8 /* Vehicle.m */,
+				64998E3A1A86816E00166AA8 /* User.h */,
+				64998E3B1A86816E00166AA8 /* User.m */,
 				6461D7321A7D4DC200ADA6BD /* DataManager.h */,
 				6461D7331A7D4DC200ADA6BD /* DataManager.m */,
-				6414C8A91A66DCB500D28B6C /* Vehicle.h */,
-				6414C8AA1A66DCB500D28B6C /* Vehicle.m */,
-				6414C8AC1A66E1E700D28B6C /* User.h */,
-				6414C8AD1A66E1E700D28B6C /* User.m */,
-				6414C8AF1A66E37800D28B6C /* Message.h */,
-				6414C8B01A66E37800D28B6C /* Message.m */,
+				6414C8A91A66DCB500D28B6C /* OldVehicle.h */,
+				6414C8AA1A66DCB500D28B6C /* OldVehicle.m */,
+				6414C8AC1A66E1E700D28B6C /* OldUser.h */,
+				6414C8AD1A66E1E700D28B6C /* OldUser.m */,
+				6414C8AF1A66E37800D28B6C /* OldMessage.h */,
+				6414C8B01A66E37800D28B6C /* OldMessage.m */,
 				64F702621A73D5BD00130051 /* LicenseNumberValidator.h */,
 				64F702631A73D5BD00130051 /* LicenseNumberValidator.m */,
 			);
@@ -184,6 +207,10 @@
 				64FD6C1B1A76B537001B2B8A /* MyVehiclesViewController.m */,
 				6429ADAB1A7EA94600DCEB1E /* NewMessageViewController.h */,
 				6429ADAC1A7EA94600DCEB1E /* NewMessageViewController.m */,
+				644D36F81A866A5600D51B8D /* ReadMessageViewController.h */,
+				644D36F91A866A5600D51B8D /* ReadMessageViewController.m */,
+				64DED9B61A87C2E90011B91F /* LoginViewController.h */,
+				64DED9B71A87C2E90011B91F /* LoginViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -288,19 +315,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6414C8B11A66E37800D28B6C /* Message.m in Sources */,
+				64998E3C1A86816E00166AA8 /* User.m in Sources */,
+				6414C8B11A66E37800D28B6C /* OldMessage.m in Sources */,
 				6429ADAD1A7EA94600DCEB1E /* NewMessageViewController.m in Sources */,
 				64FD6C1C1A76B537001B2B8A /* MyVehiclesViewController.m in Sources */,
-				6414C8AE1A66E1E700D28B6C /* User.m in Sources */,
+				644D36FA1A866A5600D51B8D /* ReadMessageViewController.m in Sources */,
+				6414C8AE1A66E1E700D28B6C /* OldUser.m in Sources */,
 				6414C8881A66DB4F00D28B6C /* MessagesViewController.m in Sources */,
+				64998E421A86816E00166AA8 /* Message.m in Sources */,
 				64F702641A73D5BD00130051 /* LicenseNumberValidator.m in Sources */,
 				647948AD1A6C291F00D46C24 /* OldNewMessageViewController.m in Sources */,
 				6461D7341A7D4DC200ADA6BD /* DataManager.m in Sources */,
-				6414C8AB1A66DCB500D28B6C /* Vehicle.m in Sources */,
+				6414C8AB1A66DCB500D28B6C /* OldVehicle.m in Sources */,
 				6424C2EF1A71734B0066B985 /* AddVehicleViewController.m in Sources */,
 				6414C8821A66DB4F00D28B6C /* AppDelegate.m in Sources */,
 				64A47CDF1A6D823300289A8B /* MessageViewController.m in Sources */,
+				64DED9B81A87C2E90011B91F /* LoginViewController.m in Sources */,
 				6414C8851A66DB4F00D28B6C /* hey.xcdatamodeld in Sources */,
+				64998E3F1A86816E00166AA8 /* Vehicle.m in Sources */,
 				6414C87F1A66DB4F00D28B6C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "hey/Hey-Prefix.pch";
 				INFOPLIST_FILE = hey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -433,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "hey/Hey-Prefix.pch";
 				INFOPLIST_FILE = hey/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

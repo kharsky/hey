@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class Vehicle;
+@class OldVehicle;
 @protocol AddVehicle;
 
 @interface AddVehicleViewController : UITableViewController
@@ -19,6 +19,6 @@
 
 @protocol AddVehicle <NSObject>
 
-- (void)addVehicle:(Vehicle *)vehicle;
+- (void)addVehicle:(OldVehicle *)vehicle;
 
 @end

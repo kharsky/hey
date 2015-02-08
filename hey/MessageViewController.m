@@ -9,8 +9,8 @@
 #import "MessageViewController.h"
 #import "MessagesViewController.h"
 
-#import "Message.h"
-#import "Vehicle.h"
+#import "OldMessage.h"
+#import "OldVehicle.h"
 
 @interface MessageViewController ()
 

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class Message;
+@class OldMessage;
 
 @interface MessageViewController : UIViewController
 
-@property (nonatomic, strong) Message *message;
+@property (nonatomic, strong) OldMessage *message;
 
 
 @end

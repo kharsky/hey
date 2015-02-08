@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class Message;
+@class OldMessage;
 
 @interface MessagesViewController : UITableViewController
 
-- (void)addNewMessage:(Message *)message;
+- (void)addNewMessage:(OldMessage *)message;
 
 @end
 
