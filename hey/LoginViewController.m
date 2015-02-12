@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 
+#import "User.h"
+
 @interface LoginViewController ()
 
 
@@ -17,14 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 1. Проверить существование пользователя  user1:user1
-    BOOL userExist = [self isUserExistWithUsername:@"user1" password:@"user1"];
-    // 2. Если пользователь существует перейти на следующий экран
-    // 3. Если нет, то отобразить
-
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -33,34 +29,33 @@
 
 - (IBAction)login:(id)sender {
     // 4. Создать пользователя
+    [self createUserWithUsername:@"user1" password:@"user1" email:@"email@email.com"];
+    
     // 5. Перейти на Главный экран
 
-    [self performSegueWithIdentifier:@"ModalTabBarController" sender:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)isUserExistWithUsername:(NSString *)username password:(NSString *)password {
-    
-    __block BOOL isUserExist = NO;
 
-    [self.context performBlockAndWait:^{
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+
+
+- (void)createUserWithUsername:(NSString *)username password:(NSString *)password email:(NSString *)email {
+    NSManagedObjectContext *context = self.context;
+    
+    [context performBlockAndWait:^{
+        User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+        user.username = username;
+        user.password = password;
+        user.email = email;
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"username LIKE[c] 'user1' AND password LIKE[c] 'user1'"];
-        [request setPredicate:predicate];
-      
-        NSError *error = nil;
-        NSUInteger count = [self.context countForFetchRequest:request error:&error];
-        if (count == NSNotFound) {
-            NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+        if ([context hasChanges]) {
+            NSError *error = nil;
+            if (![context save:&error]) {
+                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+            }
         }
-        
-        if (count == 0) {
-            isUserExist = NO;
-        }
-        isUserExist = YES;
     }];
-  
-    return isUserExist;
+
 }
 
 /*

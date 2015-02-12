@@ -8,9 +8,13 @@
 
 #import "AppDelegate.h"
 
-#import "LoginViewController.h"
+#import "MessagesViewController.h"
 
 @interface AppDelegate ()
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end
 
@@ -18,19 +22,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    BOOL isUserLoggedIn = NO;
-//    if (!isUserLoggedIn) {
-//        // 1. Получить ссылку на сториборд
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//        // 2. Получить первый контроллер
-//        UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
-//        UINavigationController *navigationController = [tabBarController.viewControllers firstObject];
-//        UIViewController *viewController = [navigationController.viewControllers firstObject];
-//        // 3. Попросить первый контроллер показать модельный контроллер логина
-//        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//        [viewController presentViewController:loginViewController animated:NO completion:nil];
-//    }
+    // 1. Получить ссылку на сториборд
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    // 2. Получить первый контроллер
+    UITabBarController *tabBarController = [storyboard instantiateInitialViewController];
+    UINavigationController *navigationController = [tabBarController.viewControllers firstObject];
+    MessagesViewController *messagesViewController = [navigationController.viewControllers firstObject];
+    messagesViewController.context = self.managedObjectContext;
+    
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+   
     return YES;
 }
 
@@ -40,6 +44,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+   
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -89,6 +94,8 @@
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"hey.sqlite"];
+    NSLog(@"database path: %@", storeURL);
+
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -118,7 +125,7 @@
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }
@@ -137,5 +144,7 @@
         }
     }
 }
+
+
 
 @end

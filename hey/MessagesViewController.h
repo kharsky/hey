@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class OldMessage;
 
 @interface MessagesViewController : UITableViewController
 
-- (void)addNewMessage:(OldMessage *)message;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
 

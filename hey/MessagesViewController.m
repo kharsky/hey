@@ -9,6 +9,7 @@
 #import "MessagesViewController.h"
 #import "OldNewMessageViewController.h"
 #import "MessageViewController.h"
+#import "LoginViewController.h"
 
 #import "OldMessage.h"
 #import "OldVehicle.h"
@@ -20,10 +21,7 @@ typedef enum : NSUInteger {
 
 @interface MessagesViewController ()
 
-@property (nonatomic, strong) OldVehicle *myVehicle;
-
-@property (nonatomic, strong) NSMutableArray *messages;
-@property (nonatomic, strong) NSArray *myMessages;
+@property (nonatomic, strong) NSArray *messages;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentetControl;
 
@@ -35,52 +33,31 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.myVehicle = [[OldVehicle alloc] init];
-    self.myVehicle.licenseNumber = @"A111AA";
-    self.myVehicle.licenseNumberType = LicenseNumberTypeRegular;
-    self.myVehicle.vehicleType = VehicleTypePassenger;
-    
-    OldMessage *message1 = [[OldMessage alloc] init];
-    message1.body = @"Строка один";
-    message1.timestamp = [NSDate date];
-    
-    OldMessage *message2 = [[OldMessage alloc] init];
-    message2.body = @"Строка два";
-    message2.timestamp = [NSDate date];
-    
-    OldMessage *message3 = [[OldMessage alloc] init];
-    message3.body = @"Строка три";
-    message3.timestamp = [NSDate date];
-    
-    self.messages = [[NSMutableArray alloc] initWithObjects:message1, message2, message3, nil];
 }
 
-- (void)addNewMessage:(OldMessage *)message {
-    [self.messages addObject:message];
-
-    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicle.licenseNumber == %@", self.myVehicle.licenseNumber];
-        self.myMessages = [self.messages filteredArrayUsingPredicate:predicate];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if(![self isUserExistWithUsername:@"user1" password:@"user1"]) {
+        [self performSegueWithIdentifier:@"ModalLogin" sender:nil];
     }
     
-    [self.tableView reloadData];
+    self.messages = [self allMessages];
 }
+
 
 - (IBAction)switchMode:(id)sender {
-    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicle.licenseNumber == %@", self.myVehicle.licenseNumber];
-        self.myMessages = [self.messages filteredArrayUsingPredicate:predicate];
-    }
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
-    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+//    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"vehicle.licenseNumber == %@", self.myVehicle.licenseNumber];
+//        self.myMessages = [self.messages filteredArrayUsingPredicate:predicate];
+//    }
+//    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+//    [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
-        return [self.myMessages count];
-    }
     return [self.messages count];
 }
 
@@ -96,7 +73,7 @@ typedef enum : NSUInteger {
         cell.imageView.image = message.photo;
     } else if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"MyMessageCell" forIndexPath:indexPath];
-        OldMessage *message = [self.myMessages objectAtIndex:indexPath.row];
+        OldMessage *message = [self.messages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
         cell.imageView.image = message.photo;
     }
@@ -107,6 +84,12 @@ typedef enum : NSUInteger {
 #pragma mark - Navigation 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ModalLogin"]) {
+        LoginViewController *loginViewController = segue.destinationViewController;
+        
+        loginViewController.context = self.context;
+    }
+    
     if ([segue.identifier isEqualToString:@"ModalNewMessage"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         
@@ -125,5 +108,47 @@ typedef enum : NSUInteger {
     }
 }
 
+#pragma mark - Working with Core Data
+
+- (BOOL)isUserExistWithUsername:(NSString *)username password:(NSString *)password {
+    
+    __block BOOL isUserExist = NO;
+    
+    [self.context performBlockAndWait:^{
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"username LIKE[c] %@ AND password LIKE[c] %@", username, password];
+        [request setPredicate:predicate];
+        
+        NSError *error = nil;
+        NSUInteger count = [self.context countForFetchRequest:request error:&error];
+        if (count == NSNotFound) {
+            NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+        }
+        
+        if (count > 0) {
+            isUserExist = YES;
+        }
+    }];
+    
+    return isUserExist;
+}
+
+- (NSArray *)allMessages {
+    
+    __block NSArray *messages = nil;
+    
+    [self.context performBlockAndWait:^{
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
+        
+        NSError *error = nil;
+        messages = [self.context executeFetchRequest:request error:&error];
+        if (messages == nil) {
+            NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+        }
+    }];
+    
+    return messages;
+}
 
 @end
