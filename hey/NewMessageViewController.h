@@ -10,7 +10,9 @@
 
 #import "AddVehicleViewController.h"
 
-@interface NewMessageViewController : UITableViewController  <AddVehicle>
+@interface NewMessageViewController : UITableViewController
+
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 @end
 

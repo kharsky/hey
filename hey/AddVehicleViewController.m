@@ -9,7 +9,7 @@
 #import "AddVehicleViewController.h"
 
 #import "LicenseNumberValidator.h"
-#import "OldVehicle.h"
+#import "Vehicle.h"
 
 typedef enum : NSUInteger {
     TableViewCellLicenseNumber,
@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 
 @interface AddVehicleViewController () <UITextFieldDelegate>
 
-@property (nonatomic, strong) OldVehicle *vehicle;
+@property (nonatomic, strong) Vehicle *vehicle;
 
 @property (weak, nonatomic) IBOutlet UITextField *licenseNumberTextField;
 @property (weak, nonatomic) IBOutlet UILabel *licenseNumberTypeLabel;
@@ -32,7 +32,9 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.vehicle = [[OldVehicle alloc] init];
+    [self.context performBlockAndWait:^{
+        self.vehicle = [NSEntityDescription insertNewObjectForEntityForName:@"Vehicle" inManagedObjectContext:self.context];
+    }];
     
     [self.licenseNumberTextField becomeFirstResponder];
 }
@@ -68,7 +70,6 @@ typedef enum : NSUInteger {
             return @"Прочее";
     }
 }
-
 
 - (void)presentLicenseNumberTypeActionSheet {
     NSString *title = @"Тип гос.номера";
@@ -198,14 +199,35 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction)cancel:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(addVehicleViewControllerDidCancel:)]) {
+        [self.delegate addVehicleViewControllerDidCancel:self];
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (IBAction)done:(id)sender {
     [self.licenseNumberTextField resignFirstResponder];
-    [self.sourceController addVehicle:self.vehicle];
     
+    // 1. Вызвать и спросить у делегата что делать с автомобилем
+    if ([self.delegate respondsToSelector:@selector(addVehicleViewController:willSaveVehicle:)]) {
+        [self.delegate addVehicleViewController:self willSaveVehicle:self.vehicle];
+    }
+
+    // 2. Сохранить автомобиль
+    [self.context performBlockAndWait:^{
+        if ([self.context hasChanges]) {
+            NSError *error = nil;
+            if (![self.context save:&error]) {
+                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+            }
+        }
+    }];
+
+    if ([self.delegate respondsToSelector:@selector(addVehicleViewController:didSaveVehicle:)]) {
+        [self.delegate addVehicleViewController:self didSaveVehicle:self.vehicle];
+    }
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

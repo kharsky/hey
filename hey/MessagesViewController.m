@@ -10,6 +10,7 @@
 #import "OldNewMessageViewController.h"
 #import "MessageViewController.h"
 #import "LoginViewController.h"
+#import "NewMessageViewController.h"
 
 #import "OldMessage.h"
 #import "OldVehicle.h"
@@ -90,11 +91,9 @@ typedef enum : NSUInteger {
         loginViewController.context = self.context;
     }
     
-    if ([segue.identifier isEqualToString:@"ModalNewMessage"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        
-        OldNewMessageViewController *newMessageViewController = [navigationController.viewControllers firstObject];
-        newMessageViewController.messagesViewController = self;
+    if ([segue.identifier isEqualToString:@"PushNewMessage"]) {
+        NewMessageViewController *newMessageViewController = segue.destinationViewController;
+        newMessageViewController.context = self.context;
     }
     
     if ([segue.identifier isEqualToString:@"PushMessage"]) {

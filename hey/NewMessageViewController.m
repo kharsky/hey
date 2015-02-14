@@ -53,6 +53,7 @@ typedef enum : NSUInteger {
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
     if ([self.vehicle.licenseNumber length] == 0) {
         self.licenseNumberLabel.text = @"Введите";
     } else {
@@ -238,17 +239,35 @@ typedef enum : NSUInteger {
 
 
 - (IBAction)done:(id)sender {
-    self.message = [[OldMessage alloc] init];
+//    self.message = [[OldMessage alloc] init];
+//    
+//    self.message.body = self.bodyMessageTextView.text;
+//    self.message.emotions = self.emotions;
+//    self.message.vehicle = self.vehicle;
+//    self.message.photo = self.photo;
+//    
+//    DataManager *dataManager = [DataManager sharedManager];
+//    
+//    [dataManager addMessage:self.message];
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
     
-    self.message.body = self.bodyMessageTextView.text;
-    self.message.emotions = self.emotions;
-    self.message.vehicle = self.vehicle;
-    self.message.photo = self.photo;
     
-    DataManager *dataManager = [DataManager sharedManager];
-    
-    [dataManager addMessage:self.message];
-    
+    [self.context performBlockAndWait:^{
+        OldMessage *message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.context];
+        
+        message.body = self.bodyMessageTextView.text;
+//        message.emotions = self.emotions;
+//        message.vehicle = self.vehicle;
+//        message.photo = self.photo;
+
+        if ([self.context hasChanges]) {
+            NSError *error = nil;
+            if (![self.context save:&error]) {
+                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+            }
+        }
+    }];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -268,7 +287,9 @@ typedef enum : NSUInteger {
         
         UINavigationController *navigationController = segue.destinationViewController;
         AddVehicleViewController *addVehicleViewController = [navigationController.viewControllers firstObject];
-        addVehicleViewController.sourceController = self;
+
+        NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        addVehicleViewController.context = childContext;
     }
 }
 

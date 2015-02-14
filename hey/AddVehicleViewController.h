@@ -8,17 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class OldVehicle;
-@protocol AddVehicle;
+@class Vehicle;
+@protocol AddVehicleViewControllerDelegate;
 
 @interface AddVehicleViewController : UITableViewController
 
-@property (nonatomic, weak) id<AddVehicle> sourceController;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, weak) id<AddVehicleViewControllerDelegate> delegate;
 
 @end
 
-@protocol AddVehicle <NSObject>
+@protocol AddVehicleViewControllerDelegate <NSObject>
 
-- (void)addVehicle:(OldVehicle *)vehicle;
+@optional
+- (void)addVehicleViewController:(AddVehicleViewController *)controller willSaveVehicle:(Vehicle *)vehicle;
+- (void)addVehicleViewController:(AddVehicleViewController *)controller didSaveVehicle:(Vehicle *)vehicle;
+- (void)addVehicleViewControllerDidCancel:(AddVehicleViewController *)controller;
 
 @end

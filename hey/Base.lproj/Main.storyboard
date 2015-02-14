@@ -554,7 +554,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pkH-qg-DY6">
                             <connections>
-                                <segue destination="qij-tV-ajW" kind="push" id="4Zm-fL-1Hw"/>
+                                <segue destination="qij-tV-ajW" kind="push" identifier="PushNewMessage" id="4Zm-fL-1Hw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

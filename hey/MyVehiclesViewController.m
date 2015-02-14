@@ -74,7 +74,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         
         UINavigationController *navigationController = segue.destinationViewController;
         AddVehicleViewController *addVehicleViewController = [navigationController.viewControllers firstObject];
-        addVehicleViewController.sourceController = self;
     }
 }
 

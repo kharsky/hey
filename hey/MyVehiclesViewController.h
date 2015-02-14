@@ -12,6 +12,5 @@
 
 @class OldVehicle;
 
-@interface MyVehiclesViewController : UITableViewController <AddVehicle>
-
+@interface MyVehiclesViewController : UITableViewController;
 @end
