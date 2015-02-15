@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AddVehicleViewController.h"
-
 @interface NewMessageViewController : UITableViewController
 
 @property (nonatomic, strong) NSManagedObjectContext *context;

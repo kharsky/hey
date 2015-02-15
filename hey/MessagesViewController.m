@@ -93,7 +93,13 @@ typedef enum : NSUInteger {
     
     if ([segue.identifier isEqualToString:@"PushNewMessage"]) {
         NewMessageViewController *newMessageViewController = segue.destinationViewController;
+        
+//        NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+//        childContext.parentContext = self.context;
+//        newMessageViewController.context = childContext;
+
         newMessageViewController.context = self.context;
+
     }
     
     if ([segue.identifier isEqualToString:@"PushMessage"]) {

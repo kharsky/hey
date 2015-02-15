@@ -11,10 +11,8 @@
 #import "NewMessageViewController.h"
 #import "AddVehicleViewController.h"
 
-#import "DataManager.h"
-
-#import "OldMessage.h"
-#import "OldVehicle.h"
+#import "Message.h"
+#import "Vehicle.h"
 
 typedef enum : NSUInteger {
     TableViewCellLicenseNumber = 0,
@@ -22,15 +20,10 @@ typedef enum : NSUInteger {
     TableViewCellSituationType = 3,
 } TableViewCell;
 
-@interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 
-@property (nonatomic, strong) OldMessage *message;
-@property (nonatomic, strong) OldVehicle *vehicle;
+@property (nonatomic, strong) Message *message;
 
-@property (nonatomic, assign) EmotionsType emotions;
-@property (nonatomic, strong) UIImage *photo;
-
-@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UILabel *emotionPlusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emotionMinusLabel;
 @property (weak, nonatomic) IBOutlet UISlider *emotionSlider;
@@ -39,6 +32,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *situationLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
+@property (strong, nonatomic) UIImagePickerController *imagePickerController;
 
 @end
 
@@ -46,47 +40,44 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.context performBlockAndWait:^{
+        self.message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.context];
+    }];
+    
     self.emotionMinusLabel.textColor = [UIColor blackColor];
     self.emotionPlusLabel.textColor = [UIColor blackColor];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    if ([self.vehicle.licenseNumber length] == 0) {
+    if ([self.message.vehicle.licenseNumber length] == 0) {
         self.licenseNumberLabel.text = @"Введите";
     } else {
-        self.licenseNumberLabel.text = self.vehicle.licenseNumber;
+        self.licenseNumberLabel.text = self.message.vehicle.licenseNumber;
     }
 }
-
-- (void)addVehicle:(OldVehicle *)vehicle {
-    self.vehicle = vehicle;
-}
-
-
 
 - (void)presentImagePicker {
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     self.imagePickerController.delegate = self;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
     
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
 - (IBAction)changeEmotion:(id)sender{
-    self.emotions = (int) [self.emotionSlider value];
+    self.message.emotions = (EmotionsType) [self.emotionSlider value];
 //    
 //    EmotionsTypeAnger,          // Гнев
 //    EmotionsTypeDisagreement,   // Несогласие
 //    EmotionsTypeNeutral,        // Нейтрально
 //    EmotionsTypeAgreement,      // Согласие
 //    EmotionsTypeEndorsement,    // Одобрение
+
     
-//
-    
-    switch (self.emotions) {
+    switch (self.message.emotions) {
         case EmotionsTypeAnger:
             self.emotionMinusLabel.textColor = [UIColor redColor];
             self.emotionPlusLabel.textColor = [UIColor grayColor];
@@ -108,7 +99,6 @@ typedef enum : NSUInteger {
             self.emotionPlusLabel.textColor = [UIColor greenColor];
             break;
     }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -236,31 +226,10 @@ typedef enum : NSUInteger {
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-
-
 - (IBAction)done:(id)sender {
-//    self.message = [[OldMessage alloc] init];
-//    
-//    self.message.body = self.bodyMessageTextView.text;
-//    self.message.emotions = self.emotions;
-//    self.message.vehicle = self.vehicle;
-//    self.message.photo = self.photo;
-//    
-//    DataManager *dataManager = [DataManager sharedManager];
-//    
-//    [dataManager addMessage:self.message];
-//    
-//    [self.navigationController popViewControllerAnimated:YES];
-    
+    [self.bodyMessageTextView resignFirstResponder];
     
     [self.context performBlockAndWait:^{
-        OldMessage *message = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.context];
-        
-        message.body = self.bodyMessageTextView.text;
-//        message.emotions = self.emotions;
-//        message.vehicle = self.vehicle;
-//        message.photo = self.photo;
-
         if ([self.context hasChanges]) {
             NSError *error = nil;
             if (![self.context save:&error]) {
@@ -268,14 +237,22 @@ typedef enum : NSUInteger {
             }
         }
     }];
+    
+    [self.context.parentContext save:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)textViewdDidEndEditing:(UITextView *)textView {
+   self.message.body = textView.text;
+}
+
 
 #pragma mark - Image Picker Controller Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    self.photo = info[UIImagePickerControllerOriginalImage];
-    self.photoImageView.image = self.photo;
+    UIImage *photo = info[UIImagePickerControllerOriginalImage];
+    self.photoImageView.image = photo;
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -289,6 +266,7 @@ typedef enum : NSUInteger {
         AddVehicleViewController *addVehicleViewController = [navigationController.viewControllers firstObject];
 
         NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        childContext.parentContext = self.context;
         addVehicleViewController.context = childContext;
     }
 }

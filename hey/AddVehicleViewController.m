@@ -219,7 +219,7 @@ typedef enum : NSUInteger {
         if ([self.context hasChanges]) {
             NSError *error = nil;
             if (![self.context save:&error]) {
-                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+                NSLog(@"Error accured while saving vehicle: %@", [error localizedDescription]);
             }
         }
     }];
