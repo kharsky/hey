@@ -37,7 +37,7 @@ typedef enum : int16_t {
 @property (nonatomic) EmotionsType emotions;
 @property (nonatomic, retain) NSData * photo;
 @property (nonatomic) SituationType situation;
-@property (nonatomic) NSTimeInterval timestamp;
+@property (nonatomic, retain) NSDate * timestamp;
 
 // Relations
 @property (nonatomic, retain) User *author;

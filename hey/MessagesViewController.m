@@ -7,13 +7,12 @@
 //
 
 #import "MessagesViewController.h"
-#import "OldNewMessageViewController.h"
 #import "MessageViewController.h"
 #import "LoginViewController.h"
 #import "NewMessageViewController.h"
 
-#import "OldMessage.h"
-#import "OldVehicle.h"
+#import "Message.h"
+#import "Vehicle.h"
 
 typedef enum : NSUInteger {
     MessagesViewControllerModeAll,
@@ -68,15 +67,15 @@ typedef enum : NSUInteger {
  
     if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeAll) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"AllMessageCell" forIndexPath:indexPath];
-        OldMessage *message = [self.messages objectAtIndex:indexPath.row];
+        Message *message = [self.messages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
         cell.detailTextLabel.text = message.vehicle.licenseNumber;
-        cell.imageView.image = message.photo;
+        cell.imageView.image = [UIImage imageWithData:message.photo];
     } else if (self.segmentetControl.selectedSegmentIndex == MessagesViewControllerModeMy) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"MyMessageCell" forIndexPath:indexPath];
-        OldMessage *message = [self.messages objectAtIndex:indexPath.row];
+        Message *message = [self.messages objectAtIndex:indexPath.row];
         cell.textLabel.text = message.body;
-        cell.imageView.image = message.photo;
+        cell.imageView.image = [UIImage imageWithData:message.photo];
     }
 
     return cell;
@@ -94,12 +93,9 @@ typedef enum : NSUInteger {
     if ([segue.identifier isEqualToString:@"PushNewMessage"]) {
         NewMessageViewController *newMessageViewController = segue.destinationViewController;
         
-//        NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//        childContext.parentContext = self.context;
-//        newMessageViewController.context = childContext;
-
-        newMessageViewController.context = self.context;
-
+        NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        childContext.parentContext = self.context;
+        newMessageViewController.context = childContext;
     }
     
     if ([segue.identifier isEqualToString:@"PushMessage"]) {
@@ -128,7 +124,7 @@ typedef enum : NSUInteger {
         NSError *error = nil;
         NSUInteger count = [self.context countForFetchRequest:request error:&error];
         if (count == NSNotFound) {
-            NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+            NSLog(@"Error occurred while searching user: %@", [error localizedDescription]);
         }
         
         if (count > 0) {
@@ -149,7 +145,7 @@ typedef enum : NSUInteger {
         NSError *error = nil;
         messages = [self.context executeFetchRequest:request error:&error];
         if (messages == nil) {
-            NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+            NSLog(@"Error occurred while searching user: %@", [error localizedDescription]);
         }
     }];
     

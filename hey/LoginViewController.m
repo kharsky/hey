@@ -51,7 +51,7 @@
         if ([context hasChanges]) {
             NSError *error = nil;
             if (![context save:&error]) {
-                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+                NSLog(@"Error occurred while searching user: %@", [error localizedDescription]);
             }
         }
     }];

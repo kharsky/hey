@@ -20,7 +20,7 @@ typedef enum : NSUInteger {
     TableViewCellSituationType = 3,
 } TableViewCell;
 
-@interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
+@interface NewMessageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, AddVehicleViewControllerDelegate>
 
 @property (nonatomic, strong) Message *message;
 
@@ -229,11 +229,13 @@ typedef enum : NSUInteger {
 - (IBAction)done:(id)sender {
     [self.bodyMessageTextView resignFirstResponder];
     
+    self.message.timestamp = [NSDate date];
+    
     [self.context performBlockAndWait:^{
         if ([self.context hasChanges]) {
             NSError *error = nil;
             if (![self.context save:&error]) {
-                NSLog(@"Error accured while searching user: %@", [error localizedDescription]);
+                NSLog(@"Error occurred while saving message: %@", [error localizedDescription]);
             }
         }
     }];
@@ -242,16 +244,22 @@ typedef enum : NSUInteger {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)textViewdDidEndEditing:(UITextView *)textView {
+- (void)textViewDidEndEditing:(UITextView *)textView {
    self.message.body = textView.text;
 }
 
+- (void)addVehicleViewController:(AddVehicleViewController *)controller didSaveVehicle:(Vehicle *)vehicle {
+    Vehicle *insertedVehicle = (Vehicle *)[self.context objectWithID:vehicle.objectID];
+    self.message.vehicle = insertedVehicle;
+}
 
 #pragma mark - Image Picker Controller Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *photo = info[UIImagePickerControllerOriginalImage];
     self.photoImageView.image = photo;
+    
+    self.message.photo = UIImageJPEGRepresentation(photo, 1.0) ;
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -268,6 +276,8 @@ typedef enum : NSUInteger {
         NSManagedObjectContext *childContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         childContext.parentContext = self.context;
         addVehicleViewController.context = childContext;
+        
+        addVehicleViewController.delegate = self;
     }
 }
 
